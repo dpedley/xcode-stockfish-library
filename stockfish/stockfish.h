@@ -7,6 +7,11 @@
 
 #import <Foundation/Foundation.h>
 
-@interface stockfish : NSObject
+// These came from the Makefile.
+#define NNUE_EMBEDDING_OFF
+#define IS_64BIT
+#define USE_PTHREADS
 
+@interface stockfish : NSObject
+-(void)evaluateFEN:(NSString *)fen;
 @end
