@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		CD3518052599C43300863DD5 /* stockfish.m in Sources */ = {isa = PBXBuildFile; fileRef = CD3518042599C43300863DD5 /* stockfish.m */; };
-		CD3518062599C43300863DD5 /* stockfish.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = CD3518032599C43300863DD5 /* stockfish.h */; };
+		CD3518052599C43300863DD5 /* StockfishObjC.m in Sources */ = {isa = PBXBuildFile; fileRef = CD3518042599C43300863DD5 /* StockfishObjC.m */; };
+		CD3518062599C43300863DD5 /* StockfishObjC.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = CD3518032599C43300863DD5 /* StockfishObjC.h */; };
 		CD35180F2599C6AB00863DD5 /* bitboard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CD35180D2599C6AB00863DD5 /* bitboard.cpp */; };
 		CD3518122599C76500863DD5 /* benchmark.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CD3518112599C76500863DD5 /* benchmark.cpp */; };
 		CD3518162599C7B100863DD5 /* endgame.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CD3518142599C7B100863DD5 /* endgame.cpp */; };
@@ -27,8 +27,11 @@
 		CD3518442599C89100863DD5 /* tt.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CD3518422599C89100863DD5 /* tt.cpp */; };
 		CD3518492599C89A00863DD5 /* uci.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CD3518462599C89A00863DD5 /* uci.cpp */; };
 		CD35184A2599C89A00863DD5 /* ucioption.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CD3518482599C89A00863DD5 /* ucioption.cpp */; };
-		CD3518732599CEEC00863DD5 /* fishwrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CD3518712599CEEC00863DD5 /* fishwrapper.cpp */; };
 		CD351879259AF95500863DD5 /* FishWrap.mm in Sources */ = {isa = PBXBuildFile; fileRef = CD351878259AF95500863DD5 /* FishWrap.mm */; };
+		CD35196C259BCCE600863DD5 /* evaluate_nnue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CD3518532599C90C00863DD5 /* evaluate_nnue.cpp */; };
+		CD35196E259BCD1E00863DD5 /* half_kp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CD35185E2599C90C00863DD5 /* half_kp.cpp */; };
+		CD351970259BCD3100863DD5 /* tbprobe.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CD3518502599C8FD00863DD5 /* tbprobe.cpp */; };
+		CD3519A1259BD14400863DD5 /* bitbase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CD3519A0259BD14400863DD5 /* bitbase.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -38,7 +41,7 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
-				CD3518062599C43300863DD5 /* stockfish.h in CopyFiles */,
+				CD3518062599C43300863DD5 /* StockfishObjC.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -46,8 +49,8 @@
 
 /* Begin PBXFileReference section */
 		CD3518002599C43300863DD5 /* libstockfish.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libstockfish.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		CD3518032599C43300863DD5 /* stockfish.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = stockfish.h; sourceTree = "<group>"; };
-		CD3518042599C43300863DD5 /* stockfish.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = stockfish.m; sourceTree = "<group>"; };
+		CD3518032599C43300863DD5 /* StockfishObjC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StockfishObjC.h; sourceTree = "<group>"; };
+		CD3518042599C43300863DD5 /* StockfishObjC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StockfishObjC.m; sourceTree = "<group>"; };
 		CD35180D2599C6AB00863DD5 /* bitboard.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = bitboard.cpp; sourceTree = "<group>"; };
 		CD35180E2599C6AB00863DD5 /* bitboard.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = bitboard.h; sourceTree = "<group>"; };
 		CD3518112599C76500863DD5 /* benchmark.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = benchmark.cpp; sourceTree = "<group>"; };
@@ -104,9 +107,9 @@
 		CD3518682599C93100863DD5 /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
 		CD3518692599C93100863DD5 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		CD35186C2599CA1400863DD5 /* thread_win32_osx.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = thread_win32_osx.h; sourceTree = "<group>"; };
-		CD3518712599CEEC00863DD5 /* fishwrapper.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = fishwrapper.cpp; sourceTree = "<group>"; };
 		CD3518722599CEEC00863DD5 /* FishWrap.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FishWrap.h; sourceTree = "<group>"; };
 		CD351878259AF95500863DD5 /* FishWrap.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = FishWrap.mm; sourceTree = "<group>"; };
+		CD3519A0259BD14400863DD5 /* bitbase.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = bitbase.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +143,7 @@
 			isa = PBXGroup;
 			children = (
 				CD3518112599C76500863DD5 /* benchmark.cpp */,
+				CD3519A0259BD14400863DD5 /* bitbase.cpp */,
 				CD35180D2599C6AB00863DD5 /* bitboard.cpp */,
 				CD35180E2599C6AB00863DD5 /* bitboard.h */,
 				CD3518142599C7B100863DD5 /* endgame.cpp */,
@@ -148,7 +152,6 @@
 				CD3518192599C7BD00863DD5 /* evaluate.h */,
 				CD3518722599CEEC00863DD5 /* FishWrap.h */,
 				CD351878259AF95500863DD5 /* FishWrap.mm */,
-				CD3518712599CEEC00863DD5 /* fishwrapper.cpp */,
 				CD3518652599C91800863DD5 /* incbin */,
 				CD3518692599C93100863DD5 /* main.cpp */,
 				CD3518682599C93100863DD5 /* Makefile */,
@@ -168,8 +171,8 @@
 				CD3518332599C85500863DD5 /* psqt.cpp */,
 				CD3518342599C85500863DD5 /* search.cpp */,
 				CD3518322599C85500863DD5 /* search.h */,
-				CD3518032599C43300863DD5 /* stockfish.h */,
-				CD3518042599C43300863DD5 /* stockfish.m */,
+				CD3518032599C43300863DD5 /* StockfishObjC.h */,
+				CD3518042599C43300863DD5 /* StockfishObjC.m */,
 				CD35184F2599C8FD00863DD5 /* syzygy */,
 				CD35186C2599CA1400863DD5 /* thread_win32_osx.h */,
 				CD35183A2599C86900863DD5 /* thread.cpp */,
@@ -314,18 +317,21 @@
 				CD3518362599C85500863DD5 /* search.cpp in Sources */,
 				CD35184A2599C89A00863DD5 /* ucioption.cpp in Sources */,
 				CD35183D2599C86900863DD5 /* thread.cpp in Sources */,
+				CD35196C259BCCE600863DD5 /* evaluate_nnue.cpp in Sources */,
 				CD3518432599C89100863DD5 /* tune.cpp in Sources */,
 				CD3518122599C76500863DD5 /* benchmark.cpp in Sources */,
+				CD35196E259BCD1E00863DD5 /* half_kp.cpp in Sources */,
+				CD3519A1259BD14400863DD5 /* bitbase.cpp in Sources */,
 				CD3518162599C7B100863DD5 /* endgame.cpp in Sources */,
 				CD35182F2599C82D00863DD5 /* position.cpp in Sources */,
 				CD3518352599C85500863DD5 /* psqt.cpp in Sources */,
 				CD35180F2599C6AB00863DD5 /* bitboard.cpp in Sources */,
-				CD3518732599CEEC00863DD5 /* fishwrapper.cpp in Sources */,
 				CD3518282599C82000863DD5 /* movegen.cpp in Sources */,
 				CD35181A2599C7BD00863DD5 /* evaluate.cpp in Sources */,
 				CD3518442599C89100863DD5 /* tt.cpp in Sources */,
+				CD351970259BCD3100863DD5 /* tbprobe.cpp in Sources */,
 				CD351879259AF95500863DD5 /* FishWrap.mm in Sources */,
-				CD3518052599C43300863DD5 /* stockfish.m in Sources */,
+				CD3518052599C43300863DD5 /* StockfishObjC.m in Sources */,
 				CD3518492599C89A00863DD5 /* uci.cpp in Sources */,
 				CD3518292599C82000863DD5 /* movepick.cpp in Sources */,
 				CD3518302599C82D00863DD5 /* pawns.cpp in Sources */,
@@ -338,11 +344,10 @@
 		CD3518072599C43300863DD5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "c++17";
-				CLANG_CXX_LIBRARY = "compiler-default";
+				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
@@ -368,13 +373,11 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				COPY_PHASE_STRIP = NO;
+				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_C_LANGUAGE_STANDARD = c11;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -390,6 +393,7 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -397,11 +401,10 @@
 		CD3518082599C43300863DD5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "c++17";
-				CLANG_CXX_LIBRARY = "compiler-default";
+				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
@@ -427,12 +430,11 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				COPY_PHASE_STRIP = NO;
+				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_C_LANGUAGE_STANDARD = c11;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -442,6 +444,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -450,6 +453,7 @@
 		CD35180A2599C43300863DD5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "c++17";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = GNE4VFAE6G;
@@ -463,6 +467,7 @@
 		CD35180B2599C43300863DD5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "c++17";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = GNE4VFAE6G;

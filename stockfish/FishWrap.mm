@@ -17,22 +17,28 @@
 #include "uci.h"
 #include "syzygy/tbprobe.h"
 #include <sstream>
+#include "StockfishObjC.h"
 
 namespace PSQT {
   void init();
 }
 const char* StartFEN = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1";
+std::stringstream fishOut;
 
 @interface FishLoop : NSOperation
 @property (nonatomic, strong) NSMutableArray *commands;
+@property (nonatomic, weak) NSObject<TalksToFish> *aquaman;
 @end
 
 @implementation FishLoop
 
-- (instancetype)init {
+- (instancetype)initWithAquaman:(NSObject *)aquaman {
     self = [super init];
     if (self) {
-        self.commands = [[NSMutableArray alloc] init];
+        self.commands = [@[] mutableCopy];
+        if ([aquaman conformsToProtocol:@protocol(TalksToFish)]) {
+            self.aquaman = (NSObject<TalksToFish> *)aquaman;
+        }
     }
     return self;
 }
@@ -43,11 +49,57 @@ const char* StartFEN = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1
     }
 }
 
+- (BOOL)isBestMove:(NSString *)message {
+    if (message==nil || message.length == 0) {
+        return NO;
+    }
+    if (message.length > 9 && [[message substringToIndex:9] isEqualToString:@"bestmove "]) {
+        return YES;
+    }
+    return NO;
+}
+
+- (BOOL)isInfo:(NSString *)message {
+    if (message==nil || message.length == 0) {
+        return NO;
+    }
+    if (message.length > 5 && [[message substringToIndex:5] isEqualToString:@"info "]) {
+        return YES;
+    }
+    return NO;
+}
+
+- (void)startAquaman {
+    [NSThread detachNewThreadWithBlock:^{
+        do {
+            std::string glub = fishOut.str();
+            fishOut.clear();
+            fishOut.str(std::string());
+            if (glub.size() > 0) {
+                NSString *messageLines = [NSString stringWithUTF8String:glub.c_str()];
+                NSArray *messages = [messageLines componentsSeparatedByString:@"\n"];
+                for (int i=0; i<messages.count; i++) {
+                    NSString *message = messages[i];
+                    if ([self isBestMove:message]) {
+                        [self.aquaman stockfishBestMove:message];
+                        Search::clear();
+                    } else if ([self isInfo:message]) {
+                        [self.aquaman stockfishInfo:message];
+                    } else {
+                        [self.aquaman stockfishError:message];
+                    }
+                }
+            }
+            [NSThread sleepForTimeInterval:0.05];
+        } while (!self.cancelled);
+    }];
+}
+
 - (void)main {
     Position pos;
     std::string token;
     StateListPtr states(new std::deque<StateInfo>(1));
-
+    Options["Use NNUE"] = false;
     // Initialize Stockfish classes
     UCI::init(Options);
     Tune::init();
@@ -58,9 +110,9 @@ const char* StartFEN = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1
     Endgames::init();
     Threads.set(size_t(Options["Threads"]));
     Search::clear(); // After threads are up
-    Eval::NNUE::init();    
+    Eval::NNUE::init();
     pos.set(StartFEN, false, &states->back(), Threads.main());
-
+    [self startAquaman];
     do {
         NSString *command = [self.commands firstObject];
         if (command != nil) {
@@ -69,11 +121,13 @@ const char* StartFEN = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1
             }
             // Call UCI
             std::string cmd = std::string([command UTF8String]);
+            [self.aquaman stockfishError:command];
             UCI::processCommand(token, cmd, pos, states);
         } else {
             [NSThread sleepForTimeInterval:0.05];
         }
     } while (!self.cancelled);
+    
 }
 
 @end
@@ -88,10 +142,13 @@ const char* StartFEN = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1
     return @"";
 }
 
--(instancetype)init {
+-(instancetype)initWithAquaman:(NSObject *)aquaman {
     self = [super init];
     if (self) {
-        self.fishLoop = [[FishLoop alloc] init];
+        self.fishLoop = [[FishLoop alloc] initWithAquaman:aquaman];
+        [NSThread detachNewThreadWithBlock:^{
+            [self.fishLoop start];
+        }];
     }
     return self;
 }

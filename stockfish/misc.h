@@ -61,8 +61,9 @@ private:
 enum SyncCout { IO_LOCK, IO_UNLOCK };
 std::ostream& operator<<(std::ostream&, SyncCout);
 
-#define sync_cout std::cout << IO_LOCK
-#define sync_endl std::endl << IO_UNLOCK
+extern std::stringstream fishOut;
+#define sync_cout fishOut
+#define sync_endl std::endl
 
 // `ptr` must point to an array of size at least
 // `sizeof(T) * N + alignment` bytes, where `N` is the
