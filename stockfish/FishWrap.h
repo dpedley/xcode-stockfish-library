@@ -2,6 +2,6 @@
 
 @interface FishWrap : NSObject
 - (NSString *)sendUCICommand:(NSString *)uci;
--(instancetype)initWithAquaman:(NSObject *)aquaman;
+-(instancetype)initWithTalksTo:(NSObject *)talksTo;
 @end
 

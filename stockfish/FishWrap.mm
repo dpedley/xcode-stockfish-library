@@ -27,17 +27,17 @@ std::stringstream fishOut;
 
 @interface FishLoop : NSOperation
 @property (nonatomic, strong) NSMutableArray *commands;
-@property (nonatomic, weak) NSObject<TalksToFish> *aquaman;
+@property (nonatomic, weak) NSObject<TalksToFish> *communicationDelegate;
 @end
 
 @implementation FishLoop
 
-- (instancetype)initWithAquaman:(NSObject *)aquaman {
+- (instancetype)initWithTalksTo:(NSObject *)talksTo {
     self = [super init];
     if (self) {
         self.commands = [@[] mutableCopy];
-        if ([aquaman conformsToProtocol:@protocol(TalksToFish)]) {
-            self.aquaman = (NSObject<TalksToFish> *)aquaman;
+        if ([self.communicationDelegate conformsToProtocol:@protocol(TalksToFish)]) {
+            self.communicationDelegate = (NSObject<TalksToFish> *)talksTo;
         }
     }
     return self;
@@ -81,12 +81,12 @@ std::stringstream fishOut;
                 for (int i=0; i<messages.count; i++) {
                     NSString *message = messages[i];
                     if ([self isBestMove:message]) {
-                        [self.aquaman stockfishBestMove:message];
+                        [self.communicationDelegate stockfishBestMove:message];
                         Search::clear();
                     } else if ([self isInfo:message]) {
-                        [self.aquaman stockfishInfo:message];
+                        [self.communicationDelegate stockfishInfo:message];
                     } else {
-                        [self.aquaman stockfishError:message];
+                        [self.communicationDelegate stockfishError:message];
                     }
                 }
             }
@@ -121,13 +121,11 @@ std::stringstream fishOut;
             }
             // Call UCI
             std::string cmd = std::string([command UTF8String]);
-            [self.aquaman stockfishError:command];
             UCI::processCommand(token, cmd, pos, states);
         } else {
             [NSThread sleepForTimeInterval:0.05];
         }
     } while (!self.cancelled);
-    
 }
 
 @end
@@ -142,10 +140,10 @@ std::stringstream fishOut;
     return @"";
 }
 
--(instancetype)initWithAquaman:(NSObject *)aquaman {
+-(instancetype)initWithTalksTo:(NSObject *)talksTo {
     self = [super init];
     if (self) {
-        self.fishLoop = [[FishLoop alloc] initWithAquaman:aquaman];
+        self.fishLoop = [[FishLoop alloc] initWithTalksTo:talksTo];
         [NSThread detachNewThreadWithBlock:^{
             [self.fishLoop start];
         }];

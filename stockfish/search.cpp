@@ -279,7 +279,7 @@ void MainThread::search() {
 
     if (bestThread->rootMoves[0].pv.size() > 1 || bestThread->rootMoves[0].extract_ponder_from_tt(rootPos)) {
         sync_cout << "bestmove " << UCI::move(bestThread->rootMoves[0].pv[0], rootPos.is_chess960())
-                    << " ponder " << UCI::move(bestThread->rootMoves[0].pv[1], rootPos.is_chess960());
+                    << " ponder " << UCI::move(bestThread->rootMoves[0].pv[1], rootPos.is_chess960()) << sync_endl;
     } else {
         sync_cout << "bestmove " << UCI::move(bestThread->rootMoves[0].pv[0], rootPos.is_chess960()) << sync_endl;
     }

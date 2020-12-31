@@ -19,5 +19,5 @@
 
 @interface Stockfish : NSObject
 -(void)setPositionAndEvaluate:(NSString *)position time:(NSTimeInterval)timeInterval;
--(instancetype)initWithAquaman:(NSObject<TalksToFish> *)aquaman;
+-(instancetype)initWithTalksTo:(NSObject<TalksToFish> *)talksTo;
 @end

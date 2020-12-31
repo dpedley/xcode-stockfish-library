@@ -15,10 +15,10 @@
 
 @implementation Stockfish
 
--(instancetype)initWithAquaman:(NSObject <TalksToFish>*)aquaman {
+-(instancetype)initWithTalksTo:(NSObject<TalksToFish> *)talksTo {
     self = [super init];
     if (self) {
-        self.fishWrap = [[FishWrap alloc] initWithAquaman:aquaman];
+        self.fishWrap = [[FishWrap alloc] initWithTalksTo:talksTo];
     }
     return self;
 }
