@@ -36,7 +36,7 @@ std::stringstream fishOut;
     self = [super init];
     if (self) {
         self.commands = [@[] mutableCopy];
-        if ([self.communicationDelegate conformsToProtocol:@protocol(TalksToFish)]) {
+        if ([talksTo conformsToProtocol:@protocol(TalksToFish)]) {
             self.communicationDelegate = (NSObject<TalksToFish> *)talksTo;
         }
     }
@@ -85,7 +85,7 @@ std::stringstream fishOut;
                         Search::clear();
                     } else if ([self isInfo:message]) {
                         [self.communicationDelegate stockfishInfo:message];
-                    } else {
+                    } else if ([message length]>0) {
                         [self.communicationDelegate stockfishError:message];
                     }
                 }
