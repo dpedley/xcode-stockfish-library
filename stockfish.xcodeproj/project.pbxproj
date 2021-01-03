@@ -126,7 +126,7 @@
 		CD3517F72599C43300863DD5 = {
 			isa = PBXGroup;
 			children = (
-				CD3518022599C43300863DD5 /* stockfish */,
+				CD3518022599C43300863DD5 /* src */,
 				CD3518012599C43300863DD5 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -139,7 +139,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		CD3518022599C43300863DD5 /* stockfish */ = {
+		CD3518022599C43300863DD5 /* src */ = {
 			isa = PBXGroup;
 			children = (
 				CD3518112599C76500863DD5 /* benchmark.cpp */,
@@ -188,7 +188,7 @@
 				CD3518472599C89A00863DD5 /* uci.h */,
 				CD3518482599C89A00863DD5 /* ucioption.cpp */,
 			);
-			path = stockfish;
+			path = src;
 			sourceTree = "<group>";
 		};
 		CD35184F2599C8FD00863DD5 /* syzygy */ = {
